@@ -680,14 +680,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441734776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 73549990}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1441734779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,10 +697,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441734776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 144d01be616108c41bea18f0648d2c61, type: 3}
+  m_Script: {fileID: 11500000, guid: 30a2038e13d6334488b4e94f7d08a145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRigidBody: {fileID: 0}
+  myRigidBody: {fileID: 1441734777}
+  prefabExplotion: {fileID: 3626706270227808229, guid: 5ca371815217b8d4fa8c3ddffd0cbf88, type: 3}
+  playerVelocity: 10
 --- !u!1 &1691379917
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1691379920}
   - component: {fileID: 1691379919}
-  - component: {fileID: 1691379918}
+  - component: {fileID: 1691379921}
   m_Layer: 0
   m_Name: InputHandler
   m_TagString: Untagged
@@ -719,19 +721,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1691379918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691379917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2791746623574469d6b921fe1ced93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerController: {fileID: 1441734776}
 --- !u!114 &1691379919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,8 +748,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1691379918}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+      - m_Target: {fileID: 1691379921}
+        m_TargetAssemblyTypeName: IvInputHandler, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
@@ -775,8 +764,8 @@ MonoBehaviour:
     m_ActionName: Game/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/anyKey]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1691379918}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+      - m_Target: {fileID: 1691379921}
+        m_TargetAssemblyTypeName: IvInputHandler, Assembly-CSharp
         m_MethodName: OnAim
         m_Mode: 0
         m_Arguments:
@@ -791,8 +780,8 @@ MonoBehaviour:
     m_ActionName: Game/Aim[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1691379918}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+      - m_Target: {fileID: 1691379921}
+        m_TargetAssemblyTypeName: IvInputHandler, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -825,6 +814,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1691379921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691379917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4a1f4d3cc24be44a04d5e3a225fcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 1441734776}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
